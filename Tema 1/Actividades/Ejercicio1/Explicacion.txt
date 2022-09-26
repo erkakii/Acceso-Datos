@@ -1,0 +1,2 @@
+Realice esta tarea de una manera pero dandole un par de vueltas me pareció que la ruta que salia era larga y creo que no era lo que se buscaba por lo que con ciertas modificaciones he conseguido 
+un resultado más satifactorio. Los archivos con final en el nombre son los archivos con el ejercicio terminado 
