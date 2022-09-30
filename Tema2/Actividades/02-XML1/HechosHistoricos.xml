@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE HechosHistoricos [
+        <!ELEMENT HechosHistoricos (descripcion)*>
+        <!ELEMENT descripcion (fecha)*>
+        <!ATTLIST descripcion
+                hecho CDATA #REQUIRED>
+        <!ELEMENT fecha (dia|mes|anio)*>
+        <!ELEMENT dia (#PCDATA)>
+        <!ELEMENT mes (#PCDATA)>
+        <!ELEMENT anio (#PCDATA)>
+        ]>
+<HechosHistoricos>
+    <descripcion hecho="IBM da a conocer el PC">
+        <fecha>
+            <dia>
+                12
+            </dia>
+            <mes>
+                8
+            </mes>
+            <anio>
+                1981
+            </anio>
+        </fecha>
+    </descripcion>
+    <descripcion hecho="Se funda Google">
+        <fecha>
+            <dia>
+                4
+            </dia>
+            <mes>
+                9
+            </mes>
+            <anio>
+                1998
+            </anio>
+        </fecha>
+    </descripcion>
+    <descripcion hecho="Se funda Facebook">
+        <fecha>
+            <dia>
+                4
+            </dia>
+            <mes>
+                2
+            </mes>
+            <anio>
+                2004
+            </anio>
+        </fecha>
+    </descripcion>
+</HechosHistoricos>
