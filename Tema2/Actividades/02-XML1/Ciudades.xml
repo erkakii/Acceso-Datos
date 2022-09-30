@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE ciudades [
+        <!ELEMENT ciudades (nombres|paiseses|continentes)*>
+        <!ELEMENT nombres (nombre)*>
+        <!ELEMENT nombre (#PCDATA)>
+        <!ELEMENT paiseses (pais)*>
+        <!ELEMENT pais (#PCDATA)>
+        <!ATTLIST pais
+                idioma CDATA #REQUIRED>
+        <!ELEMENT continentes (continente)*>
+        <!ELEMENT continente (#PCDATA)>
+        ]>
+<ciudades>
+    <nombres>
+        <nombre>
+            Manila
+        </nombre>
+        <nombre>
+            Kiev
+        </nombre>
+        <nombre>
+            La Habana
+        </nombre>
+        <nombre>
+            El Cairo
+        </nombre>
+    </nombres>
+    <paiseses>
+        <pais idioma="Ingles">
+            Filipinas
+        </pais>
+        <pais idioma="Ucraniano">
+            Ucrania
+        </pais>
+        <pais idioma="Español">
+            Cuba
+        </pais>
+        <pais idioma="Árabe">
+            Egipto
+        </pais>
+    </paiseses>
+    <continentes>
+        <continente>
+            Asia
+        </continente>
+        <continente>
+            Europa
+        </continente>
+        <continente>
+            América
+        </continente>
+        <continente>
+            África
+        </continente>
+    </continentes>
+</ciudades>

@@ -1,7 +1,7 @@
 import java.io.*;
 import java.util.Arrays;
 
-public class Main {
+public class Ejer1 {
     public static void main(String[] args) {
         /**
          * <summary>
@@ -11,6 +11,7 @@ public class Main {
          */
 
         File palabras = new File("palabras.txt");
+        File palabrasBin = new File("palabrasBinario.bin");
         BufferedReader lector;
         BufferedWriter escritor, escritor2;
         String cadena;
@@ -40,6 +41,7 @@ public class Main {
             escritor2.close();
 
 
+
         } catch (FileNotFoundException fileNotFoundException) {
             System.err.println("Ha ocurrido un error: " + fileNotFoundException);
             ;
@@ -47,5 +49,11 @@ public class Main {
             System.err.println("Ha ocurrido un error: " + ioException);
             ;
         }
+
+        /*
+        <------------------------------------------------------------------------------------------------------------->
+         */
+        
+
     }
 }
