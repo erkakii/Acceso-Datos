@@ -42,11 +42,8 @@ public class Ejer1 {
 
 
 
-        } catch (FileNotFoundException fileNotFoundException) {
-            System.err.println("Ha ocurrido un error: " + fileNotFoundException);
-            ;
-        } catch (IOException ioException) {
-            System.err.println("Ha ocurrido un error: " + ioException);
+        } catch (IOException fileNotFoundException) {
+            System.err.println("Ha ocurrido un error: " + fileNotFoundException.getMessage());
             ;
         }
 
