@@ -1,20 +1,25 @@
 import java.io.*;
 import java.sql.*;
+import java.util.Scanner;
 
 public class Conexion {
 
 
     public static Conexion conexion = null;
-
+    public static Scanner sc = new Scanner(System.in);
     public static void main(String[] args) throws SQLException, IOException {
         Statement st = null;
+
+
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             String servidor = "jdbc:mysql://dns11036.phdns11.es";
             Connection conection = DriverManager.getConnection(servidor, "ad2223", "nervion");
             if (conection != null) {
                 st = conection.createStatement();
-                ejer10(st);
+                //ordenarPorLetraDada(conseguirNombre(),st, conseguirApellido());
+                //ejer11(st);
+                //ejer10(st);
                 //ejer9(st);
                 //ejer8(st);
                 //ejer7(st);
@@ -40,7 +45,39 @@ public class Conexion {
 
     }
 
-    private static void ejer10(Statement st) {
+    private static String conseguirApellido() {
+        String letra;
+
+        System.out.println("Diga la letra por la que quiere ordenar");
+        letra = sc.nextLine().toUpperCase();
+
+        return letra;
+    }
+
+    private static void ordenarPorLetraDada(String conseguirLetra, Statement st, String letraApellido) throws SQLException {
+        String sql = "SELECT * FROM ad2223.acastro WHERE nombre LIKE '" + conseguirLetra + "%' and apellidos LIKE '" + letraApellido + "%' order by edad";
+        ResultSet rs = st.executeQuery(sql);
+        while (rs.next())
+            System.out.println(rs.getString("nombre") + " " + rs.getString("apellidos") + " " + rs.getString("edad"));
+    }
+
+    private static String conseguirNombre() {
+        String letra;
+
+        System.out.println("Diga la letra por la que quiere ordenar");
+        letra = sc.nextLine().toUpperCase();
+
+        return letra;
+    }
+
+    private static void ejer11(Statement st) {
+
+    }
+
+    private static void ejer10(Statement st) throws SQLException {
+        String colum = "ALTER TABLE ad2223.acastro ADD laboral ENUM('Estudiante', 'Ocupado', 'Parado', 'Jubilado') NOT NULL AFTER edad";
+        st.executeQuery(colum);
+
     }
 
     private static void ejer9(Statement st) throws SQLException {
