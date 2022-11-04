@@ -14,7 +14,7 @@ public class Conexion {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             String servidor = "jdbc:mysql://dns11036.phdns11.es";
-            Connection conection = DriverManager.getConnection(servidor, "ad2223", "nervion");
+            Connection conection = DriverManager.getConnection(servidor, "acastro", "acastro");
             if (conection != null) {
                 st = conection.createStatement();
                 //ordenarPorLetraDada(conseguirNombre(),st, conseguirApellido());
@@ -25,7 +25,7 @@ public class Conexion {
                 //ejer7(st);
                 //ejer6(st);
                 //ejer5(st);
-                //empiezePorJYOrdenadoPorApellido(st);
+                empiezePorJYOrdenadoPorApellido(st);
                 //mostrarMayoresde30(st);
                 //ordenarPorEdad(st);
                 //hacerInserccion(st);
