@@ -27,12 +27,12 @@ public class Main {
                         "CONSTRAINT FK_id_Games FOREIGN KEY (idGames) REFERENCES Games(idGames)"});
                 File datos = new File("datos.txt");
                 insertarDatos(st, datos);*/
-
+                //crearTabla(st, "Maceta", new String[]{"idMaceta int Primary Key", "Nombre varchar(90)"});
                 //listarJugadores(st);
                 //listarGames(st);
                 //listarCompras(st);
-                modificarTabla(st);
-
+                //modificarTabla(st);
+                borrarTabla(st, "Maceta");
 
             } catch (SQLException sqlException) {
                 System.err.println(sqlException.getMessage());
@@ -40,6 +40,16 @@ public class Main {
         }
 
 
+    }
+
+    public static void borrarTabla(Statement st, String tabla) {
+        String sql = "DROP TABLE ad2223_acastro." + tabla + ";";
+        try {
+            st.executeUpdate(sql);
+            System.out.println("Se ha borrado con exito :D");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private static void modificarTabla(Statement st) throws SQLException {
