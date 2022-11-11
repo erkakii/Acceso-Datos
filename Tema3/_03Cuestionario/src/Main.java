@@ -14,9 +14,9 @@ public class Main {
         if (conexion != null) {
             try {
                 st = conexion.createStatement();
-                /*crearTabla(st, "Player", new String[]{"idPlayer int PRIMARY KEY", "Nick varchar(45)", "password varchar(128)", "email varchar(100)"});
-                crearTabla(st, "Games", new String[]{"idGames int PRIMARY KEY", "Nombre varchar(45)", "tiempoJugado TIME" });
-                crearTabla(st, "Compras", new String[]{
+                //crearTabla(st, "Player", new String[]{"idPlayer int PRIMARY KEY", "Nick varchar(45)", "password varchar(128)", "email varchar(100)"});
+                //crearTabla(st, "Games", new String[]{"idGames int PRIMARY KEY", "Nombre varchar(45)", "tiempoJugado TIME" });
+                /*crearTabla(st, "Compras", new String[]{
                         "idCompra int PRIMARY KEY",
                         "idPlayer int",
                         "idGames int",
@@ -24,15 +24,15 @@ public class Main {
                         "Precio DECIMAL(6,2)",
                         "FechaCompra date",
                         "CONSTRAINT FK_id_Player FOREIGN KEY (idPlayer) REFERENCES Player(idPlayer)",
-                        "CONSTRAINT FK_id_Games FOREIGN KEY (idGames) REFERENCES Games(idGames)"});
-                File datos = new File("datos.txt");
-                insertarDatos(st, datos);*/
+                        "CONSTRAINT FK_id_Games FOREIGN KEY (idGames) REFERENCES Games(idGames)"});*/
+                //File datos = new File("datos.txt");
+                //insertarDatos(st, datos);
                 //crearTabla(st, "Maceta", new String[]{"idMaceta int Primary Key", "Nombre varchar(90)"});
                 //listarJugadores(st);
                 //listarGames(st);
                 //listarCompras(st);
                 //modificarTabla(st);
-                borrarTabla(st, "Maceta");
+                //borrarTabla(st, "Maceta");
 
             } catch (SQLException sqlException) {
                 System.err.println(sqlException.getMessage());
@@ -41,7 +41,35 @@ public class Main {
 
 
     }
+    public static void modificarMatricula(Statement st) {
+        Scanner sc = new Scanner(System.in);
+        int idModificar, idAlumno, idProfesor, curso;
+        String sql, asignatura, comillas = "\"";
+        mostrarListadoCompletoMatricula(st);
+        System.out.print("Escribe la ID de la matricula a modificar");
+        idModificar = validarDatos();
+        System.out.print("Escribe el nueva ID del alumno");
+        idAlumno = validarDatos();
+        System.out.print("Escribe el nuevo ID del profesor");
+        idProfesor = validarDatos();
+        System.out.print("Escribe la nueva asignatura -> ");
+        asignatura = sc.next();
+        System.out.print("Escribe el nuevo curso");
+        curso = validarDatos();
+        try {
+            sql = "UPDATE ad2223_fmlobato.Matricula SET idAlumnado= " + idAlumno + ", idProfesorado=" + idProfesor + ", Asignatura=" + comillas + asignatura + comillas + ", Curso=" + curso + " WHERE idMatricula =" + idModificar + ";";
+            st.executeUpdate(sql);
+        } catch (SQLException e) {
+            System.out.println("Ha ocurrido un error." + e);
+        }
+        mostrarListadoCompletoMatricula(st);
+    }
 
+    /**
+     * Borra la tabla que tenga el mismo nombre que le pasamos por parametros
+     * @param st statement
+     * @param tabla nombre de la tabla qeu queremos borrar
+     */
     public static void borrarTabla(Statement st, String tabla) {
         String sql = "DROP TABLE ad2223_acastro." + tabla + ";";
         try {
@@ -52,12 +80,22 @@ public class Main {
         }
     }
 
+
+    /**
+     * Modifica la tabla que le digamos y le anade un campo a la misma
+     * @param st statement
+     * @throws SQLException lanza la excepcion de sql
+     */
     private static void modificarTabla(Statement st) throws SQLException {
-        String sql = "ALTER TABLE ad2223_acastro.Player MODIFY Nick ";
+        String sql = "ALTER TABLE Player ADD apellido varchar(28)";
         st.execute(sql);
     }
 
-
+    /**
+     * Lista la tabla de games
+     * @param st statement
+     * @throws SQLException lanza la excepcion de sql
+     */
     private static void listarGames(Statement st) throws SQLException {
         String sql = "SELECT Nombre, tiempoJugado FROM ad2223_acastro.Games";
         ResultSet rs = st.executeQuery(sql);
@@ -66,6 +104,11 @@ public class Main {
         }
     }
 
+    /**
+     * Lista la tabla de compras
+     * @param st statement
+     * @throws SQLException lanza la excepcion de sql
+     */
     private static void listarCompras(Statement st) throws SQLException {
         String sql = "SELECT idPlayer, Cosa, Precio FROM ad2223_acastro.Compras";
         ResultSet rs = st.executeQuery(sql);
@@ -75,6 +118,11 @@ public class Main {
         }
     }
 
+    /**
+     * Lista los jugadores
+     * @param st
+     * @throws SQLException
+     */
     private static void listarJugadores(Statement st) throws SQLException {
         String sql = "SELECT Nick, email FROM ad2223_acastro.Player";
         ResultSet rs = st.executeQuery(sql);
@@ -123,7 +171,7 @@ public class Main {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             String servidor = "jdbc:mysql://dns11036.phdns11.es:3306";
-            conexion = DriverManager.getConnection(servidor, "acastro", "acastro");
+            conexion = DriverManager.getConnection(servidor, "ad2223_acastro", "1234");
             System.out.println("Se ha conectado con exito :D");
         } catch (SQLException | ClassNotFoundException exception) {
             System.err.println(exception.getMessage());
