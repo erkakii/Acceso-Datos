@@ -1,0 +1,96 @@
+{
+  "Comercio": {
+    "Compras": {
+      "compra": [
+        {
+          "fecha": "16-08-2022",
+          "ticket": {
+            "producto": [
+              {
+                "descripcion": "Tomates",
+                "precio_unidad": "1,99"
+              },
+              {
+                "descripcion": "Taboulé",
+                "precio_unidad": "1,95"
+              },
+              {
+                "descripcion": "Tortilla",
+                "precio_unidad": "2,69"
+              }
+            ]
+          }
+        },
+        {
+          "fecha": "29-08-2022",
+          "ticket": {
+            "producto": [
+              {
+                "descripcion": "Ensalada",
+                "precio_unidad": "1,09"
+              },
+              {
+                "descripcion": "Pasta",
+                "descuento": "0,35",
+                "unidades": 2,
+                "precio_unidad": "1,65"
+              },
+              {
+                "descripcion": "Taboulé",
+                "precio_unidad": "1,95"
+              },
+              {
+                "descripcion": "Huevos L",
+                "descuento": "0,12",
+                "precio_unidad": "1,19"
+              },
+              {
+                "descripcion": "Frutos secos",
+                "precio_unidad": "2,69"
+              },
+              {
+                "descripcion": "Hummus",
+                "precio_unidad": "0,95"
+              },
+              {
+                "descripcion": "Zumo naranja",
+                "unidades": 2,
+                "precio_unidad": "1,49"
+              },
+              {
+                "descripcion": "Ciruelas",
+                "unidades": "0,464",
+                "precio_unidad": "2,99"
+              }
+            ]
+          }
+        },
+        {
+          "fecha": "12-09-2022",
+          "ticket": {
+            "producto": [
+              {
+                "descripcion": "Mozzarella",
+                "unidades": 2,
+                "precio_unidad": "0,95"
+              },
+              {
+                "descripcion": "Margarina",
+                "descuento": "0,45",
+                "precio_unidad": "1,49"
+              },
+              {
+                "descripcion": "Uva",
+                "precio_unidad": "1,79"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "lugar": {
+      "cp": 41920,
+      "content": "San Juan de Aznalfarache"
+    }
+  }
+}
