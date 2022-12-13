@@ -45,114 +45,134 @@ public class Mundial {
                 do {
                     Mostrarmenu(); //Muestra el menú
                     opc = Utilidades.validarOpcion(0, 5);
+
                     switch (opc) {
-                        case 1 -> {
-                            if (octavosJugados) {
-                                System.out.println("Los octavos de final ya se han jugado");
-                                System.out.println("====Estos son los resultados====");
-                                mostrarResultadosOctavos();
-                            } else {
-                                menuVelocidades();
-                                int opcion = Utilidades.validarOpcion(1, 4);
-                                switch (opcion) {
-                                    case 1 -> velocidadPartido = 1000;
-                                    case 2 -> velocidadPartido = 750;
-                                    case 3 -> velocidadPartido = 350;
-                                    case 4 -> velocidadPartido = 100;
-                                }
-                                jugarOctavos();
-                            }
-
-                        }
-                        case 2 -> {
-                            if (cuartosJugados) {
-                                System.out.println("Los cuartos de final ya se han jugado");
-                                System.out.println("====Estos son los resultados====");
-                                mostrarResultadosCuartos();
-                            } else {
-                                if (octavosJugados){
-                                    menuVelocidades();
-                                    int opcion = Utilidades.validarOpcion(1, 4);
-                                    switch (opcion) {
-                                        case 1 -> velocidadPartido = 1000;
-                                        case 2 -> velocidadPartido = 750;
-                                        case 3 -> velocidadPartido = 350;
-                                        case 4 -> velocidadPartido = 100;
-                                    }
-                                    jugarCuartos();
-                                }else{
-                                    System.out.println("Antes se deben de jugar los octavos de final");
-                                }
-
-                            }
-
-                        }
-                        case 3 -> {
-                            if (semifinalesJugadas) {
-                                System.out.println("La semifinal ya se ha jugado");
-                                System.out.println("====Estos son los resultados====");
-                                mostrarResultadosSemifinales();
-                            } else {
-                                if(cuartosJugados){
-                                    menuVelocidades();
-                                    int opcion = Utilidades.validarOpcion(1, 4);
-                                    switch (opcion) {
-                                        case 1 -> velocidadPartido = 1000;
-                                        case 2 -> velocidadPartido = 750;
-                                        case 3 -> velocidadPartido = 350;
-                                        case 4 -> velocidadPartido = 100;
-                                    }
-                                    jugarSemifinales();
-                                }else {
-                                    System.out.println("Antes se deben de jugar los cuartos de final");
-                                }
-
-                            }
-                        }
-                        case 4 -> {
-
-                            if (finalJugada) {
-                                System.out.println("La final ya se ha jugado");
-                                System.out.println("====Este ha sido el resultado====");
-                                mostrarResultadoFinal();
-                            } else {
-                                if (semifinalesJugadas){
-                                    menuVelocidades();
-                                    int opcion = Utilidades.validarOpcion(1,4);
-                                    switch (opcion){
-                                        case 1 -> velocidadPartido = 1000;
-                                        case 2 -> velocidadPartido = 750;
-                                        case 3 -> velocidadPartido = 350;
-                                        case 4 -> velocidadPartido = 100;
-                                    }
-                                    jugarFinal();
-                                }else {
-                                    System.out.println("Antes se deben de jugar las semifinales");
-                                }
-
-                            }
-                        }
+                        case 1 -> octavosDeFinal();
+                        case 2 -> cuartosDeFinal();
+                        case 3 -> semifinales();
+                        case 4 -> finall();
                         case 5 -> {
                             reiniciar();
                             System.out.println("Reinicio completado :D");
                         }
-                        case 0 -> {
-                            System.out.println("Adiós :)");
-
-                        }
+                        case 0 -> System.out.println("Adiós :)");
                     }
                 } while (opc != 0);
-
                 st.close();
             }
-
             if (st != null) {
                 connection.close();
             }
         } catch (SQLException sqlException) {
             System.err.println(sqlException.getMessage());
         }
+    }
 
+    /**
+     * Método qeu hace toda la lógica de los octavos de final
+     * Precondición: Ninguna
+     * PostCondición: Ninguna
+     */
+    private static void octavosDeFinal() {
+        if (octavosJugados) {
+            System.out.println("Los octavos de final ya se han jugado");
+            System.out.println("====Estos son los resultados====");
+            mostrarResultadosOctavos();
+        } else {
+            menuVelocidades();
+            int opcion = Utilidades.validarOpcion(1, 4);
+            switch (opcion) {
+                case 1 -> velocidadPartido = 1000;
+                case 2 -> velocidadPartido = 750;
+                case 3 -> velocidadPartido = 350;
+                case 4 -> velocidadPartido = 100;
+            }
+            jugarOctavos();
+        }
+    }
+
+    /**
+     * Método qeu hace toda la lógica de los cuartos de final
+     * Precondición: Ninguna
+     * PostCondición: Ninguna
+     */
+    private static void cuartosDeFinal() {
+        if (cuartosJugados) {
+            System.out.println("Los cuartos de final ya se han jugado");
+            System.out.println("====Estos son los resultados====");
+            mostrarResultadosCuartos();
+        } else {
+            if (octavosJugados){
+                menuVelocidades();
+                int opcion = Utilidades.validarOpcion(1, 4);
+                switch (opcion) {
+                    case 1 -> velocidadPartido = 1000;
+                    case 2 -> velocidadPartido = 750;
+                    case 3 -> velocidadPartido = 350;
+                    case 4 -> velocidadPartido = 100;
+                }
+                jugarCuartos();
+            }else{
+                System.out.println("Antes se deben de jugar los octavos de final");
+            }
+
+        }
+    }
+
+    /**
+     * Método qeu hace toda la lógica de la final
+     * Precondición: Ninguna
+     * PostCondición: Ninguna
+     */
+    private static void finall() {
+        if (finalJugada) {
+            System.out.println("La final ya se ha jugado");
+            System.out.println("====Este ha sido el resultado====");
+            mostrarResultadoFinal();
+        } else {
+            if (semifinalesJugadas){
+                menuVelocidades();
+                int opcion = Utilidades.validarOpcion(1,4);
+                switch (opcion){
+                    case 1 -> velocidadPartido = 1000;
+                    case 2 -> velocidadPartido = 750;
+                    case 3 -> velocidadPartido = 350;
+                    case 4 -> velocidadPartido = 100;
+                }
+                jugarFinal();
+            }else {
+                System.out.println("Antes se deben de jugar las semifinales");
+            }
+
+        }
+    }
+
+    /**
+     * Método qeu hace toda la lógica de las semifinales
+     * Precondición: Ninguna
+     * PostCondición: Ninguna
+     */
+    private static void semifinales() {
+        if (semifinalesJugadas) {
+            System.out.println("La semifinal ya se ha jugado");
+            System.out.println("====Estos son los resultados====");
+            mostrarResultadosSemifinales();
+        } else {
+            if(cuartosJugados){
+                menuVelocidades();
+                int opcion = Utilidades.validarOpcion(1, 4);
+                switch (opcion) {
+                    case 1 -> velocidadPartido = 1000;
+                    case 2 -> velocidadPartido = 750;
+                    case 3 -> velocidadPartido = 350;
+                    case 4 -> velocidadPartido = 100;
+                }
+                jugarSemifinales();
+            }else {
+                System.out.println("Antes se deben de jugar los cuartos de final");
+            }
+
+        }
     }
 
     //Muestra las opciones que tiene el usuario para reproducir los partidos de la fase del torneo
@@ -171,7 +191,7 @@ public class Mundial {
      * Inserta los equipos en la base de datos mediante la lectura de un fichero en el que tenemos los 16 equipos que van
      * a participar. En este caso hemos introducido los 16 equipos que se encuentran en octavos de final del mundial de catar
      * Precondición: Que el fichero exista
-     * Postcondición: Ninguna
+     * PostCondición: Ninguna
      * @param datos archivo de texto en el que se encuentran el nombre de nuestros equipos
      */
     private static void insertarEquipos(File datos) {
