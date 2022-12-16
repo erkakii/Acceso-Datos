@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<persistence xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://java.sun.com/xml/ns/persistence
+             http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+             version="2.0" xmlns="http://java.sun.com/xml/ns/persistence">
+
+    <persistence-unit name="Pesistencia">
+        <properties>
+            <property name="connection.driver_class" value="com.mysql.cj.jdbc.Driver" />
+            <property name="connection.url" value="jdbc:mysql://dns11036.phdns11.es:3306/ad2223_acastro" />
+            <property name="connection.username" value="ad2223_acastro" />
+            <property name="connection.password" value="1234" />
+
+            <property name="hibernate.dialect" value="" />
+            <property name="hibernate.hbm2ddl.auto" value="" />
+        </properties>
+    </persistence-unit>
+
+</persistence>
+

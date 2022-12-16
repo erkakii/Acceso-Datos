@@ -14,7 +14,7 @@ public class Main {
             setUp();
             insertarPersona("Alvaro", "maceta");
             seleccionarPersona();
-            borrarPersona("Alvaro", "Castro");
+            borrarPersona("Maceta", "Cuadrada");
             actualizarPersona();
         } catch (Exception e) {
             System.err.println(e.getMessage());
@@ -30,6 +30,11 @@ public class Main {
 
     private static void borrarPersona(String nombre, String apellido) {
         PersonaEntity persona = new PersonaEntity(nombre, apellido);
+        Session sesion = HibernateUtil.getCurrentSession();
+        sesion.beginTransaction();
+        sesion.delete(persona);
+        sesion.getTransaction().commit();
+        sesion.close();
 
 
 
